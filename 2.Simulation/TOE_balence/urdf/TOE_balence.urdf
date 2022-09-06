@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="TOE_balence">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="3.46944695195361E-17 0.0600600740935481 2.22044604925031E-16"
+        rpy="0 0 0" />
+      <mass
+        value="20.4614601836601" />
+      <inertia
+        ixx="0.249216414234592"
+        ixy="-1.60131885338263E-17"
+        ixz="2.12952553269204E-17"
+        iyy="0.6175648877969"
+        iyz="-4.26598358468633E-17"
+        izz="0.435038252585552" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="LB_1">
+    <inertial>
+      <origin
+        xyz="-0.0912954643793855 -4.30211422042248E-16 0.0113056803430923"
+        rpy="0 0 0" />
+      <mass
+        value="0.324823001646924" />
+      <inertia
+        ixx="0.000107013716905788"
+        ixy="1.28950027117944E-19"
+        ixz="-3.87197766270466E-05"
+        iyy="0.00180263223873226"
+        iyz="4.37275444553061E-20"
+        izz="0.00187778887256759" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/LB_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/LB_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LB_1"
+    type="revolute">
+    <origin
+      xyz="-0.05 0.08 -0.185"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="LB_1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="1.0466"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="LB_2">
+    <inertial>
+      <origin
+        xyz="0.15 -1.38777878078145E-17 0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.444823001646924" />
+      <inertia
+        ixx="0.000145446900494077"
+        ixy="-5.73338937578026E-20"
+        ixz="5.30143760293281E-05"
+        iyy="0.00486196443754987"
+        iyz="-7.73733477640343E-20"
+        izz="0.00497068788779691" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/LB_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/LB_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LB_2"
+    type="revolute">
+    <origin
+      xyz="-0.200000000000001 0 -0.0250000000000002"
+      rpy="0 0 -0.585685543457151" />
+    <parent
+      link="LB_1" />
+    <child
+      link="LB_2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="LF_1">
+    <inertial>
+      <origin
+        xyz="0.0749790246153097 5.96744875736022E-16 0.0168807682307895"
+        rpy="0 0 0" />
+      <mass
+        value="0.395508836352695" />
+      <inertia
+        ixx="0.000183089900579248"
+        ixy="1.22584331602294E-19"
+        ixz="0.000204048265203773"
+        iyy="0.0023625702698755"
+        iyz="-1.52298451305155E-20"
+        izz="0.00239345934565496" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/LF_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/LF_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_1"
+    type="revolute">
+    <origin
+      xyz="0.05 0.08 -0.21"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="LF_1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="-1.0466"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="LF_2">
+    <inertial>
+      <origin
+        xyz="-0.15 -1.38777878078145E-17 0.00999999999999995"
+        rpy="0 0 0" />
+      <mass
+        value="0.444823001646924" />
+      <inertia
+        ixx="0.000145446900494078"
+        ixy="-1.41843389906989E-19"
+        ixz="-5.30143760293279E-05"
+        iyy="0.00486196443754988"
+        iyz="-9.51376352720901E-20"
+        izz="0.00497068788779692" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/LF_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/LF_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LF_2"
+    type="revolute">
+    <origin
+      xyz="0.199999999999999 0 -0.0250000000000001"
+      rpy="0 0 0.58568554345715" />
+    <parent
+      link="LF_1" />
+    <child
+      link="LF_2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="L">
+    <inertial>
+      <origin
+        xyz="0 0 0.015"
+        rpy="0 0 0" />
+      <mass
+        value="0.763407014822321" />
+      <inertia
+        ixx="0.00160315473112687"
+        ixy="-1.43995601033231E-20"
+        ixz="-7.10198537447759E-25"
+        iyy="0.00160315473112687"
+        iyz="2.95431016670969E-24"
+        izz="0.0030917984100304" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/L.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/L.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="L"
+    type="revolute">
+    <origin
+      xyz="-0.3 0 -0.0350000000000001"
+      rpy="0 0 -0.58568554345715" />
+    <parent
+      link="LF_2" />
+    <child
+      link="L" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="RF_1">
+    <inertial>
+      <origin
+        xyz="0.0749790246153108 -5.55111512312578E-17 -0.0168807682307895"
+        rpy="0 0 0" />
+      <mass
+        value="0.395508836352695" />
+      <inertia
+        ixx="0.000183089900579248"
+        ixy="1.76472263066726E-19"
+        ixz="-0.000204048265203774"
+        iyy="0.0023625702698755"
+        iyz="9.34217943423371E-21"
+        izz="0.00239345934565496" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/RF_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/RF_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_1"
+    type="revolute">
+    <origin
+      xyz="0.05 0.08 0.21"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RF_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="-1.0466"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="RF_2">
+    <inertial>
+      <origin
+        xyz="-0.15 2.08166817117217E-17 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.444823001646925" />
+      <inertia
+        ixx="0.000145446900494078"
+        ixy="3.59141969635823E-19"
+        ixz="5.30143760293279E-05"
+        iyy="0.00486196443754988"
+        iyz="-1.6940658945086E-20"
+        izz="0.00497068788779692" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/RF_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/RF_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RF_2"
+    type="revolute">
+    <origin
+      xyz="0.2 0 0.025"
+      rpy="0 0 0.58568554345715" />
+    <parent
+      link="RF_1" />
+    <child
+      link="RF_2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="R">
+    <inertial>
+      <origin
+        xyz="0 -1.38777878078145E-17 -0.0149999999999999"
+        rpy="0 0 0" />
+      <mass
+        value="0.763407014822321" />
+      <inertia
+        ixx="0.00160315473112687"
+        ixy="-1.86347248395946E-19"
+        ixz="-1.93699604447497E-24"
+        iyy="0.00160315473112687"
+        iyz="2.42191734012313E-24"
+        izz="0.0030917984100304" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/R.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/R.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="R"
+    type="revolute">
+    <origin
+      xyz="-0.3 0 0.035"
+      rpy="0 0 -0.58568554345715" />
+    <parent
+      link="RF_2" />
+    <child
+      link="R" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="RB_1">
+    <inertial>
+      <origin
+        xyz="-0.0912954643793854 -3.88578058618805E-16 -0.0113056803430923"
+        rpy="0 0 0" />
+      <mass
+        value="0.324823001646925" />
+      <inertia
+        ixx="0.000107013716905788"
+        ixy="1.14549074300871E-20"
+        ixz="3.87197766270465E-05"
+        iyy="0.00180263223873226"
+        iyz="5.60254202873649E-22"
+        izz="0.00187778887256759" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/RB_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/RB_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RB_1"
+    type="revolute">
+    <origin
+      xyz="-0.05 0.08 0.185"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="RB_1" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="1.0466"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="RB_2">
+    <inertial>
+      <origin
+        xyz="0.15 0 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="0.444823001646925" />
+      <inertia
+        ixx="0.000145446900494078"
+        ixy="3.32036915323686E-19"
+        ixz="-5.30143760293279E-05"
+        iyy="0.00486196443754988"
+        iyz="1.6940658945086E-20"
+        izz="0.00497068788779692" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/RB_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://TOE_balence/meshes/RB_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RB_2"
+    type="revolute">
+    <origin
+      xyz="-0.2 0 0.025"
+      rpy="0 0 -0.585685543457153" />
+    <parent
+      link="RB_1" />
+    <child
+      link="RB_2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>
