@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="c_ctrl.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="self_include">
+      <UniqueIdentifier>{40fd2668-ce4c-4e19-8f38-15cd8427248a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="type_def.h">
+      <Filter>self_include</Filter>
+    </ClInclude>
+    <ClInclude Include="init.h">
+      <Filter>self_include</Filter>
+    </ClInclude>
+    <ClInclude Include="control_set.h">
+      <Filter>self_include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
