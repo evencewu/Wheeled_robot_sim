@@ -4,8 +4,8 @@ WorldInfo {
   coordinateSystem "NUE"
 }
 Viewpoint {
-  orientation -0.01116898378691888 -0.96558062731852 -0.25986401433892464 3.0586387337928667
-  position -0.1545470886119541 1.0876735661545662 -1.8098124684386394
+  orientation 0.9680696018134166 -0.2383647335879835 -0.07761120941167288 5.634280780699902
+  position 0.6027832828975952 2.669739339349664 3.307439780369436
 }
 TexturedBackground {
 }
@@ -16,6 +16,21 @@ Floor {
 Robot {
   translation 0 0.175 0
   children [
+    DEF ACC Accelerometer {
+      translation 0 0.08 0
+      rotation 1 0 0 0
+      name "ACC"
+    }
+    DEF GYRO Gyro {
+      translation 0 0.08 0
+      rotation 1 0 0 0
+      name "GYRO"
+    }
+    DEF IMU InertialUnit {
+      translation 0 0.08 0
+      rotation 1 0 0 0
+      name "IMU"
+    }
     DEF RB_1 HingeJoint {
       jointParameters DEF RB_1 HingeJointParameters {
         axis 0 0 1
@@ -89,6 +104,7 @@ Robot {
                     DEF R_MOTOR RotationalMotor {
                       name "R_MOTOR"
                       controlPID 20 0 0
+                      maxVelocity 100
                     }
                     DEF R_POS PositionSensor {
                       name "R_POS"
@@ -196,7 +212,7 @@ Robot {
       ]
       endPoint DEF RF_1 Solid {
         translation 0.05000000000000001 0.07999999999999996 0.19
-        rotation 0.7071067811865477 -5.551115129082572e-17 0.7071067811865477 3.1414999999999997
+        rotation 0.7071067811865477 -5.55111512908252e-17 0.7071067811865477 3.1414999999999997
         children [
           DEF RF_2 HingeJoint {
             jointParameters DEF RF_2 HingeJointParameters {
@@ -204,7 +220,7 @@ Robot {
               anchor 0.025 0 0.2
             }
             endPoint DEF RF_2 Solid {
-              translation 0.02500000000000019 -1.6678672751035138e-17 0.20000000000000023
+              translation 0.02500000000000019 -1.667867092973068e-17 0.20000000000000023
               rotation 1 0 0 0.585388
               children [
                 DEF RF_2 Shape {
@@ -296,7 +312,7 @@ Robot {
       ]
       endPoint DEF LB_1 Solid {
         translation -0.05 0.08 -0.165
-        rotation -0.7071067811865476 0 0.7071067811865476 3.1415926
+        rotation -0.7071067811865475 0 0.7071067811865475 3.1415926
         children [
           DEF LB_1 Shape {
             appearance Appearance {
@@ -352,6 +368,7 @@ Robot {
                     DEF L_MOTOR RotationalMotor {
                       name "L_MOTOR"
                       controlPID 20 0 0
+                      maxVelocity 100
                     }
                     DEF L_POS PositionSensor {
                       name "L_POS"

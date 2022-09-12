@@ -48,18 +48,20 @@
 #define F       1
 #define WHEEL   2
 
-//µç»ú½á¹¹Ìå
+#define g   9.8
+
+//ç”µæœºå®šä¹‰
 typedef struct Motor{
     WbDeviceTag ID;
     const char* name;
 
     double MAX_TORQUE;
     double torque;
-    double speed;//ËÙ¶È¿ØÖÆ²ÎÊı
+    double speed;//ï¿½Ù¶È¿ï¿½ï¿½Æ²ï¿½ï¿½ï¿½
 
 }MOTOR;
 
-//±àÂëÆ÷½á¹¹Ìå
+//ç¼–ç å™¨å®šä¹‰
 typedef struct Pos {
     WbDeviceTag ID;
     const char* name;
@@ -69,26 +71,46 @@ typedef struct Pos {
 
 }POS;
 
-//ËÅ·şÄ£×é½á¹¹Ìå£¨°üº¬µç»úºÍ´«¸ĞÆ÷£©
+//ä¼ºæœæ¨¡ç»„å®šä¹‰
 typedef struct Servo_module{
     MOTOR motor;
     POS pos;
 }SERVO_MOD;
 
-//ÂÖ×é½á¹¹Ìå£¨ÂÖÍÈ£©
+//è½®ç»„å®šä¹‰
 typedef struct Wheelset {
     SERVO_MOD servo_mod[3];
 
     double endpoint_x;
     double endpoint_y;
 
+    double jacobian[4];
+
 }WHEELSET;
 
-//
-typedef struct Body {
-    WHEELSET wheelset[2];//Á½ÌõÍÈ
+//IMUå®šä¹‰
+typedef struct Imu {
+    WbDeviceTag ID;
+    const char* name;
+}IMU;
 
-    //»úÆ÷ÎïÀí²ÎÊı¶¨Òå
+//IMU_Då®šä¹‰
+typedef struct Gyro {
+    WbDeviceTag ID;
+    const char* name;
+}GYRO;
+
+//æœºå™¨äººå®šä¹‰
+typedef struct Body {
+    WHEELSET wheelset[2];//å·¦å³è½®ç»„
+
+    IMU imu;
+    GYRO gyro;
+
+    double angle_data[9];
+    double liner_data[9];
+
+    //æœºä½“å‚æ•°
     double radius_wheel; //m
 
     double length_d;  //0.1m
@@ -100,18 +122,39 @@ typedef struct Body {
     double mass_l2;    //0.175kg
     double mass_wheel; //0.4kg
 
+    double J;  //
+    double J_wheel;  //
 
-    //»úÆ÷×´Ì¬²ÎÊı¶¨Òå
+
+    //çŠ¶æ€å‚æ•°
 
     double height_of_center; //m
+    //leg
+    
+
+    //LQR
+    double L_way;  //
+    double L_V;  //
+    double R_way; //
+    double R_V;  //
+
+    double THETA;  //
+    double D_THETA;
+
+    double T;
+
+    //IMU
 
 }BODY;
 //init.h
 void init_all();
 void motor_init();
+void imu_init();
 void position_sensor_init();
 //control.h
 void read_pos();
 void calculating_leg(int side, double arpha, double beta);
+void lqr_ctrl();
+void calculating_body();
 
 #endif

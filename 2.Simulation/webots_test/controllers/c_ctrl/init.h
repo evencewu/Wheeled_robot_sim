@@ -13,7 +13,18 @@ void init_all() {
     ROBOT.mass_l2 = 0.175;
     ROBOT.mass_wheel = 0.4;
 
+    ROBOT.J = 0.435038523;
+    ROBOT.J_wheel = 0.293727;
+
+    ROBOT.L_way = 0;  //
+    ROBOT.L_V = 0;  //
+    ROBOT.R_way = 0; //
+    ROBOT.R_V = 0;  //
+    ROBOT.THETA = 0;
+    ROBOT.D_THETA = 0;
+
     motor_init();
+    imu_init();
     position_sensor_init();
 }
 
@@ -30,16 +41,14 @@ void motor_init() {
         for (int j = 0; j < 3; j++) {
             //获取电机ID
             ROBOT.wheelset[i].servo_mod[j].motor.ID = wb_robot_get_device(ROBOT.wheelset[i].servo_mod[j].motor.name);
-            //assert(ROBOT.wheelset[i].servo_mod[j].motor.ID);
             //获取最大扭矩
             ROBOT.wheelset[i].servo_mod[j].motor.MAX_TORQUE = wb_motor_get_max_torque(ROBOT.wheelset[i].servo_mod[j].motor.ID);
-            //printf("max_t%f\n",ROBOT.motor[i].MAX_TORQUE);
 
-            wb_motor_set_control_pid(ROBOT.wheelset[i].servo_mod[j].motor.ID,20,0,0);
+            wb_motor_set_control_pid(ROBOT.wheelset[i].servo_mod[j].motor.ID,50,5,0);
 
             //使能扭矩反馈
             int sampling_period;
-            sampling_period = TIME_STEP;// wb_motor_get_torque_feedback_sampling_period(ROBOT.motor[i].ID);
+            sampling_period = TIME_STEP;
             wb_motor_enable_torque_feedback(ROBOT.wheelset[i].servo_mod[j].motor.ID, sampling_period);
             //归零
             ROBOT.wheelset[i].servo_mod[j].motor.torque = 0;
@@ -66,6 +75,21 @@ void position_sensor_init() {
             ROBOT.wheelset[i].servo_mod[j].pos.position = 0;
             ROBOT.wheelset[i].servo_mod[j].pos.position_last = 0;
         }
+    }
+};
+
+void imu_init() {
+    ROBOT.imu.name = "IMU";
+    ROBOT.gyro.name = "GYRO";
+
+    ROBOT.imu.ID = wb_robot_get_device(ROBOT.imu.name);
+    ROBOT.gyro.ID = wb_robot_get_device(ROBOT.gyro.name);
+    wb_inertial_unit_enable(ROBOT.imu.ID, TIME_STEP);
+    wb_gyro_enable(ROBOT.gyro.ID, TIME_STEP);
+
+    for (int i = 0; i < 3; i++) {
+        ROBOT.angle_data[i] = 0;
+        ROBOT.liner_data[i] = 0;
     }
 };
 
