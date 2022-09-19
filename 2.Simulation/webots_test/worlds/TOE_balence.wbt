@@ -1,11 +1,11 @@
 #VRML_SIM R2021b utf8
 WorldInfo {
-  basicTimeStep 5
+  basicTimeStep 10
   coordinateSystem "NUE"
 }
 Viewpoint {
   orientation 0.9680696018134166 -0.2383647335879835 -0.07761120941167288 5.634280780699902
-  position 0.6027832828975952 2.669739339349664 3.307439780369436
+  position 0.4771621634042806 2.095385964812781 2.5290190388385168
 }
 TexturedBackground {
 }
@@ -42,7 +42,7 @@ Robot {
         }
         DEF RB_1_MOTOR RotationalMotor {
           name "RB_1_MOTOR"
-          controlPID 20 0 0
+          controlPID 50 5 0
           maxTorque 35
         }
       ]
@@ -103,7 +103,7 @@ Robot {
                   device [
                     DEF R_MOTOR RotationalMotor {
                       name "R_MOTOR"
-                      controlPID 20 0 0
+                      controlPID 50 5 0
                       maxVelocity 100
                     }
                     DEF R_POS PositionSensor {
@@ -206,13 +206,13 @@ Robot {
         }
         DEF RF_1_MOTOR RotationalMotor {
           name "RF_1_MOTOR"
-          controlPID 20 0 0
+          controlPID 50 5 0
           maxTorque 35
         }
       ]
       endPoint DEF RF_1 Solid {
         translation 0.05000000000000001 0.07999999999999996 0.19
-        rotation 0.7071067811865477 -5.55111512908252e-17 0.7071067811865477 3.1414999999999997
+        rotation 0.7071067811865477 -5.551115129082385e-17 0.7071067811865477 3.1414999999999997
         children [
           DEF RF_2 HingeJoint {
             jointParameters DEF RF_2 HingeJointParameters {
@@ -220,7 +220,7 @@ Robot {
               anchor 0.025 0 0.2
             }
             endPoint DEF RF_2 Solid {
-              translation 0.02500000000000019 -1.667867092973068e-17 0.20000000000000023
+              translation 0.02500000000000019 -1.6678670929730422e-17 0.20000000000000023
               rotation 1 0 0 0.585388
               children [
                 DEF RF_2 Shape {
@@ -306,13 +306,13 @@ Robot {
         }
         DEF LB_1_MOTOR RotationalMotor {
           name "LB_1_MOTOR"
-          controlPID 20 0 0
+          controlPID 50 5 0
           maxTorque 35
         }
       ]
       endPoint DEF LB_1 Solid {
         translation -0.05 0.08 -0.165
-        rotation -0.7071067811865475 0 0.7071067811865475 3.1415926
+        rotation -0.7071067811865476 0 0.7071067811865476 3.1415926
         children [
           DEF LB_1 Shape {
             appearance Appearance {
@@ -367,7 +367,7 @@ Robot {
                   device [
                     DEF L_MOTOR RotationalMotor {
                       name "L_MOTOR"
-                      controlPID 20 0 0
+                      controlPID 50 5 0
                       maxVelocity 100
                     }
                     DEF L_POS PositionSensor {
@@ -470,7 +470,7 @@ Robot {
         }
         DEF LF_1_MOTOR RotationalMotor {
           name "LF_1_MOTOR"
-          controlPID 20 0 0
+          controlPID 50 5 0
           maxTorque 35
         }
       ]

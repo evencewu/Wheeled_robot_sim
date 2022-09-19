@@ -23,6 +23,8 @@ void init_all() {
     ROBOT.THETA = 0;
     ROBOT.D_THETA = 0;
 
+    ROBOT.W_V = 0;
+
     motor_init();
     imu_init();
     position_sensor_init();
@@ -81,9 +83,13 @@ void position_sensor_init() {
 void imu_init() {
     ROBOT.imu.name = "IMU";
     ROBOT.gyro.name = "GYRO";
+    ROBOT.acc.name = "ACC";
 
-    ROBOT.imu.ID = wb_robot_get_device(ROBOT.imu.name);
+    ROBOT.imu.ID  = wb_robot_get_device(ROBOT.imu.name);
     ROBOT.gyro.ID = wb_robot_get_device(ROBOT.gyro.name);
+    ROBOT.acc.ID  = wb_robot_get_device(ROBOT.acc.name);
+
+    wb_accelerometer_enable(ROBOT.acc.ID, TIME_STEP);
     wb_inertial_unit_enable(ROBOT.imu.ID, TIME_STEP);
     wb_gyro_enable(ROBOT.gyro.ID, TIME_STEP);
 

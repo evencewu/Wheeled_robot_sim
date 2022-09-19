@@ -8,8 +8,8 @@ J =jacobian([x;y],[arpha beta])
 
 simplify(J)
 %赋值验证一下
-arpha  = 0.505418;
-beta  = 0.505418; 
+arpha  = 0;
+beta  = 0; 
 d = 0.1;
 l1 = 0.2;
 l2 = 0.3;
@@ -19,4 +19,8 @@ jac = [[                                                                        
 
 j = inv(jac')
 
-j * [1;1]
+jac * [1;2]
+
+
+
+

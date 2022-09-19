@@ -56,8 +56,10 @@ typedef struct Motor{
     const char* name;
 
     double MAX_TORQUE;
-    double torque;
-    double speed;//�ٶȿ��Ʋ���
+
+    double torque;//输入期望力矩
+
+    double speed;//输入期望速度
 
 }MOTOR;
 
@@ -68,6 +70,8 @@ typedef struct Pos {
 
     double position;//rad
     double position_last;
+
+    double w;//rad/s
 
 }POS;
 
@@ -83,6 +87,20 @@ typedef struct Wheelset {
 
     double endpoint_x;
     double endpoint_y;
+
+    double endpoint_Vx;
+    double endpoint_Vy;
+
+    double W_endpoint_Fx;
+    double W_endpoint_Fy;
+
+    double W_endpoint_x;
+    double W_endpoint_y;
+
+    double W_endpoint_Vx;
+    double W_endpoint_Vy;
+
+    double endpoint_G;//重力补偿
 
     double jacobian[4];
 
@@ -100,18 +118,26 @@ typedef struct Gyro {
     const char* name;
 }GYRO;
 
+//ACC定义
+typedef struct Acc {
+    WbDeviceTag ID;
+    const char* name;
+}ACC;
+
 //机器人定义
 typedef struct Body {
     WHEELSET wheelset[2];//左右轮组
 
     IMU imu;
     GYRO gyro;
+    ACC acc;
 
     double angle_data[9];
     double liner_data[9];
 
     //机体参数
     double radius_wheel; //m
+    double wide;
 
     double length_d;  //0.1m
     double length_l1; //0.2m
@@ -129,7 +155,6 @@ typedef struct Body {
     //状态参数
 
     double height_of_center; //m
-    //leg
     
 
     //LQR
@@ -143,7 +168,12 @@ typedef struct Body {
 
     double T;
 
-    //IMU
+    //ctrl
+    double W_V;//期望速度
+    double V;
+    double WAY;//路程
+
+    double F_arm;
 
 }BODY;
 //init.h
@@ -153,8 +183,13 @@ void imu_init();
 void position_sensor_init();
 //control.h
 void read_pos();
+void read_imu();
+void read_force();
+void calculating_odometer();
 void calculating_leg(int side, double arpha, double beta);
+void leg_force_ctrl(int side);
 void lqr_ctrl();
 void calculating_body();
+
 
 #endif
