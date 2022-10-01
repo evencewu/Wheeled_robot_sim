@@ -29,19 +29,23 @@ int main(int argc, char **argv)
       while (new_key > 0) {
           switch (new_key) {
           case 87://w
-              ROBOT.W_V = 1;
+              ROBOT.W_WAY = ROBOT.WAY + 1;
+              //ROBOT.W_V = 1;
               break;
 
           case 83://s
-              ROBOT.W_V = -1;
+              ROBOT.W_WAY = ROBOT.WAY - 1;
+              //ROBOT.W_V = -1;
               break;
 
           case 65://a
-              ROBOT.W_V = 0;
+              ROBOT.W_WAY = ROBOT.WAY;
+              //ROBOT.W_V = 0;
               break;
 
           case 68://d
-              ROBOT.W_V = 0;
+              ROBOT.W_WAY = ROBOT.WAY;
+              //ROBOT.W_V = 0;
               break;
           }
           new_key = wb_keyboard_get_key();
@@ -91,6 +95,7 @@ int main(int argc, char **argv)
       printf("------------------------\n");
       printf("|| %+f || %+f || %+f || %+f ||\n\n", ROBOT.wheelset[L].W_endpoint_Vx, ROBOT.wheelset[B].W_endpoint_Vx, ROBOT.wheelset[L].W_endpoint_Fx, ROBOT.wheelset[B].W_endpoint_Fx);
       printf("|| %+f || %+f || %+f || %+f ||\n\n", ROBOT.wheelset[L].W_endpoint_Vy, ROBOT.wheelset[B].W_endpoint_Vy, ROBOT.wheelset[L].W_endpoint_Fy, ROBOT.wheelset[B].W_endpoint_Fy);
+      printf("%+f\n ||%+f\n", ROBOT.L_way, ROBOT.WAY);
       printf("------------------------\n");
 
       
@@ -102,8 +107,8 @@ int main(int argc, char **argv)
       wb_motor_set_torque(ROBOT.wheelset[R].servo_mod[B].motor.ID, ROBOT.wheelset[R].servo_mod[B].motor.torque);
       wb_motor_set_torque(ROBOT.wheelset[L].servo_mod[B].motor.ID, ROBOT.wheelset[L].servo_mod[B].motor.torque);
              
-      //wb_motor_set_torque(ROBOT.wheelset[L].servo_mod[WHEEL].motor.ID, -ROBOT.T);
-      //wb_motor_set_torque(ROBOT.wheelset[R].servo_mod[WHEEL].motor.ID, ROBOT.T);
+      wb_motor_set_torque(ROBOT.wheelset[L].servo_mod[WHEEL].motor.ID, -ROBOT.T);
+      wb_motor_set_torque(ROBOT.wheelset[R].servo_mod[WHEEL].motor.ID, ROBOT.T);
   }
 
   wb_robot_cleanup();

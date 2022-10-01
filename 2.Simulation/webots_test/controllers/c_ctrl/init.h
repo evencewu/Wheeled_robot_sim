@@ -22,6 +22,8 @@ void init_all() {
     ROBOT.R_V = 0;  //
     ROBOT.THETA = 0;
     ROBOT.D_THETA = 0;
+    ROBOT.W_THETA = 0;
+    ROBOT.W_WAY = 0;
 
     ROBOT.W_V = 0;
 

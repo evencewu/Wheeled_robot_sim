@@ -148,6 +148,7 @@ typedef struct Body {
     double mass_l2;    //0.175kg
     double mass_wheel; //0.4kg
 
+
     double J;  //
     double J_wheel;  //
 
@@ -164,6 +165,7 @@ typedef struct Body {
     double R_V;  //
 
     double THETA;  //
+    double W_THETA;
     double D_THETA;
 
     double T;
@@ -172,6 +174,7 @@ typedef struct Body {
     double W_V;//期望速度
     double V;
     double WAY;//路程
+    double W_WAY;
 
     double F_arm;
 

@@ -39,7 +39,7 @@ void calculating_odometer() {
 }
 
 void calculating_leg(int side,double arpha, double beta) {
-    //位置解算
+    //足端位置解算--------------------------
     arpha = -arpha;
 
     double d = ROBOT.length_d;
@@ -48,7 +48,6 @@ void calculating_leg(int side,double arpha, double beta) {
 
     double p1 = (-(2*pow(l1,2)*cos(arpha + beta) + pow(d,2) + 2*pow(l1,2) - 4*pow(l2,2) + 2*d*l1*cos(arpha) + 2*d*l1*cos(beta))/(2*pow(l1,2)*cos(arpha + beta) + pow(d,2) + 2*pow(l1,2) + 2*d*l1*cos(arpha) + 2*d*l1*cos(beta)));
 
-    //第一组解
     ROBOT.wheelset[side].endpoint_x = (l1 * cos(arpha)) / 2 - (l1 * cos(beta)) / 2 - (l1 * sin(arpha) * pow(p1, 0.5)) / 2 + (l1 * sin(beta) * pow(p1, 0.5)) / 2;
     ROBOT.wheelset[side].endpoint_y = -(l1 * sin(arpha)) / 2 - (l1 * sin(beta)) / 2 - (d * pow(p1, 0.5)) / 2 - (l1 * cos(arpha) * pow(p1, 0.5)) / 2 - (l1 * cos(beta) * pow(p1, 0.5)) / 2;
     
@@ -56,7 +55,7 @@ void calculating_leg(int side,double arpha, double beta) {
     double s2 = -(2 * pow(l1,2) * cos(arpha + beta) + pow(d,2) + 2 * pow(l1,2) - 4 * pow(l2,2) + 2 * d * l1 * cos(arpha) + 2 * d * l1 * cos(beta)) / (2 * pow(l1,2) * cos(arpha + beta) + pow(d,2) + 2 * pow(l1,2) + 2 * d * l1 * cos(arpha) + 2 * d * l1 * cos(beta));
     double s3 = l1 * sin(arpha + beta) + d * sin(arpha);
     double s4 = pow(s2,0.5)* pow(s1,2);
-
+    //--------------------------------------
 
     //雅可比矩阵求解
     // J         W_FX
@@ -100,6 +99,7 @@ void leg_force_ctrl(int side) {
 }
 
 void calculating_body() {
+    //路程计算
     ROBOT.L_way = ROBOT.wheelset[L].servo_mod[WHEEL].pos.position * 2 * ROBOT.radius_wheel;
     ROBOT.R_way = -ROBOT.wheelset[R].servo_mod[WHEEL].pos.position * 2 * ROBOT.radius_wheel;
 
@@ -110,12 +110,9 @@ void calculating_body() {
 }
 
 void lqr_ctrl(){
-    float K_1 = -4.4721; float K_2 = -23.8012; float K_3 = -712.3929; float K_4 = -145.8379;
-    //float K_1 = -1.4142; float K_2 = -17.5910; float K_3 = -690.0298; float K_4 = -139.8164;
-    //float K_1 = -1.0000; float K_2 = -7.1036; float K_3 = -457.9594; float K_4 = -91.4579;
-    //float K_1 = -1.1402; float K_2 = -9.0074; float K_3 = -655.6447; float K_4 = -130.6195;
-    //float K_1 = -2.0000; float K_2 = -12.0574; float K_3 = -666.9166; float K_4 = -133.6345;
+    float K_1 = -1.4142; float K_2 = -10.0315; float K_3 = -659.4296; float K_4 = -131.6302;
 
+    //-14.1421 - 38.9168 - 766.2878 - 160.7060 
 
     float m = ROBOT.mass_body + ROBOT.mass_l1 * 4 + ROBOT.mass_l2 * 4;
     float M = ROBOT.mass_wheel;
@@ -130,7 +127,7 @@ void lqr_ctrl(){
     float S_4 = (-m * l) / ((J * (M + m) + M * m * pow(l, 2)) * (I / R + 2 * M * R));
     //以上是无用代码
 
-    ROBOT.T = K_1* ROBOT.WAY + K_2 * (ROBOT.V - ROBOT.W_V) + K_3 * ROBOT.THETA + K_4 * ROBOT.D_THETA;
+    ROBOT.T = K_1* (ROBOT.L_way - ROBOT.W_WAY) + K_2 * (ROBOT.V - ROBOT.W_V) + K_3 * (ROBOT.THETA - ROBOT.W_THETA) + K_4 * ROBOT.D_THETA;
 
 }
 
