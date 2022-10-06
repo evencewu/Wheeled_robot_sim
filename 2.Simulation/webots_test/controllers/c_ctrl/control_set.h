@@ -85,8 +85,8 @@ void leg_force_ctrl(int side) {
     ROBOT.wheelset[side].W_endpoint_x = 0;
     ROBOT.wheelset[side].W_endpoint_y = -0.2;
 
-    double P = 10;
-    double D = 80;
+    double P = 8;
+    double D = 60;
 
     ROBOT.wheelset[side].W_endpoint_Vx = P * (ROBOT.wheelset[side].W_endpoint_x - ROBOT.wheelset[side].endpoint_x);
     ROBOT.wheelset[side].W_endpoint_Vy = P * (ROBOT.wheelset[side].W_endpoint_y - ROBOT.wheelset[side].endpoint_y);
